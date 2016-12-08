@@ -16,5 +16,3 @@ phases:
       - echo "Build completed on `date -u +%FT%TZ` (ISO-8601)"
       - echo "Pushing the Docker image"
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$CODEBUILD_BUILD_ID
-      - echo "Sending SNS notification on `date -u +%FT%TZ` (ISO-8601)"
-      - aws --region $AWS_SNS_REGION sns publish --subject "ECR image $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$CODEBUILD_BUILD_ID pushed" --message $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$CODEBUILD_BUILD_ID --topic-arn $AWS_SNS_TOPIC_ARN
