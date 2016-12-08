@@ -7,7 +7,7 @@ phases:
       - $(aws ecr get-login --region $AWS_DEFAULT_REGION)
   build:
     commands:
-      - echo "Build started on `date -u +%FT%TZ"` (ISO-8601)"
+      - echo "Build started on `date -u +%FT%TZ` (ISO-8601)"
       - echo "Building the Docker image"         
       - docker build -t $IMAGE_REPO_NAME:$CODEBUILD_BUILD_ID .
       - docker tag $IMAGE_REPO_NAME:$CODEBUILD_BUILD_ID $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$CODEBUILD_BUILD_ID
