@@ -10,7 +10,7 @@ phases:
       - echo "Build started on `date -u +%FT%TZ` (ISO-8601)"
       - echo "Building the Docker image"         
       - docker build -t $CODEBUILD_BUILD_ID .
-      - docker tag $IMAGE_REPO_NAME:$CODEBUILD_BUILD_ID $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$CODEBUILD_BUILD_ID
+      - docker tag $CODEBUILD_BUILD_ID $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$CODEBUILD_BUILD_ID
   post_build:
     commands:
       - echo "Build completed on `date -u +%FT%TZ` (ISO-8601)"
